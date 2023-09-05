@@ -1,1 +1,1 @@
-Starting JS learning
+Mastering JS
