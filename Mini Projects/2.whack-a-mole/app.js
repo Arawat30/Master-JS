@@ -1,5 +1,4 @@
 const squareDiv = document.querySelectorAll(".square");
-const mole = document.querySelectorAll(".mole");
 const timeLeft = document.querySelector("#time-left");
 const score = document.querySelector("#score");
 
@@ -31,9 +30,9 @@ squareDiv.forEach((square) => {
   });
 });
 
-//moving the mole randomly
+//randomly generating mole position every 500ms
 (function moveMole() {
-  moleTimer = setInterval(randomSquare, 500);
+  moleInterval = setInterval(randomSquare, 500);
 })();
 
 //countdown function for reducing the 60s
@@ -44,10 +43,10 @@ function countDown() {
   if (countDownTimer === 0) {
     alert("Time's Up, final score = " + result);
     clearInterval(countDownTimerId);
-    clearTimeout(moleTimer);
+    clearInterval(moleTimer);
   }
 }
 
-//setInterval is invoked for timer to start from 60 to 0
+//setInterval is invoked for timer to reducing -1 from countdownTimer every 1000ms
 //countDownTimerId stored to stop the setInterval
 let countDownTimerId = setInterval(countDown, 1000);
