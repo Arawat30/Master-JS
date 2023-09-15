@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const startBtn = document.querySelector(".start");
 
   const width = 10;
-  let currentIndex = 0;
   let appleIndex = 0;
   let currentSnake = [2, 1, 0];
   let direction = 1;
@@ -30,8 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     direction = 1;
     scoreDisplay.innerHTML = score;
     intervalTime = 1000;
-    currentSnake = [2, 1, 0];
-    currentIndex = 0;
+    currentSnake = [2, 1, 0]; // 0 is last element(head of the snake)
     currentSnake.forEach((index) => squares[index].classList.add("snake"));
   }
 
@@ -43,15 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
       (currentSnake[0] - width < 0 && direction === -width) || //if snake hits the top
       squares[currentSnake[0] + direction].classList.contains("snake") //if snake goes into itself
     ) {
-      alert("hit the wall");
+      alert("hit the wall/itself");
       clearInterval(interval);
       reset();
       return;
     } else {
       //moving snake after each intervalTime
-      const tail = currentSnake.pop();
+      const tail = currentSnake.pop(); // ex :for first case, [2,1,0] removes 0 from last
       squares[tail].classList.remove("snake");
-      currentSnake.unshift(currentSnake[0] + direction);
+      currentSnake.unshift(currentSnake[0] + direction);// currentSnake[0] = 2, direction = 1, [3,2,1]
 
       //if snake eats the apple
       if (squares[currentSnake[0]].classList.contains("apple")) {
@@ -62,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
         score++;
         scoreDisplay.textContent = score;
         clearInterval(interval);
-        intervalTime = intervalTime * speed;
-        interval = setInterval(moveOutcomes, intervalTime);
+        intervalTime = intervalTime * speed;// increasing speed
+        interval = setInterval(moveOutcomes, intervalTime);//reducing intervalTime
       }
 
       //new tail added visually
