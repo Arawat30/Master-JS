@@ -1,0 +1,13 @@
+.stopwatch{
+  margin: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+button{
+  border: 1px solid;
+  margin: 20px;
+  padding:20px;
+  border-radius: 5px;
+  font-size: 20px;
+}
