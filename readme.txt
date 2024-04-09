@@ -1,1 +1,1 @@
-Mastering JS day 2
+Mastering JS
